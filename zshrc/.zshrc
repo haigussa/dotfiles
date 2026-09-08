@@ -103,6 +103,11 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias v='nvim'
 export EDITOR='nvim'
 
+# open buffer line in editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 # alias e='emacs'
 alias c='code'
 alias r='ranger'
