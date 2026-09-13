@@ -156,7 +156,8 @@ eval "$(fzf --zsh)"
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'bat -n --color=always {}'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --no-height"
 
 # change the current working directory when exiting Yazi
 function y() {
