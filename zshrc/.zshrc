@@ -103,6 +103,10 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias v='nvim'
 export EDITOR='nvim'
 
+# expands history expressions like !! or !$ when you press space
+bindkey ' ' magic-space
+
+
 # open buffer line in editor
 autoload -Uz edit-command-line
 zle -N edit-command-line
@@ -122,6 +126,24 @@ alias gch="git checkout"
 alias gc="git commit"
 alias gp="git pull"
 
+
+# suffix aliases open files by extension
+# just type the filename to open it with the associated program
+
+alias -s json='$EDITOR'
+alias -s md=zed
+alias -s go='$EDITOR'
+alias -s rs='$EDITOR'
+alias -s txt=bat
+alias -s log=bat
+alias -s py='$EDITOR'
+alias -s js='$EDITOR'
+alias -s ts='$EDITOR'
+alias -s html=open
+
+# global aliases
+# copy output to clipboard (macos)
+alias -g C='| pbcopy'
 # emacs stuff
 export PATH="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
 
@@ -129,6 +151,12 @@ export PATH="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
 export PATH=${PATH}:"/usr/local/mysql-8.0.31-macos12-arm64/bin"
 
 eval "$(fzf --zsh)"
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 # change the current working directory when exiting Yazi
 function y() {
